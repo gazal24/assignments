@@ -1,0 +1,66 @@
+=====Delay Anaysis of RCA=====
+
+Delay in SUM of 1 bit Half-Adder      = 3	
+Delay in CARRY of 1 bit Adder         = 2
+Delay in half-bit Adder          	  = 3
+
+Delay in SUM of 1 bit Full-Adder      = 6	
+Delay in CARRY of 1 bit Full-Adder    = 8
+Delay in Full-bit Adder               = 8
+
+Delay in SUM of 4 bit Full-Adder      = 6 X 4 = 24	
+Delay in CARRY of 1 bit Full-Adder    = 8 X 4 = 32
+Delay in Full-bit Adder               = 32
+
+
+=====Delay Analysis of BCLA=====
+
+Delay in SUM of 1 bit Full-Adder           = 5
+Delay in GENERATE of 1 bit Full-Adder      = 2
+Delay in PROPAGATE of 1 bit Full-Adder     = 2
+Gate Delay in 1 bit Full-Adder             = 5
+
+Delay in GROUP-GENERATE in 4 bit CLU	       = 2
+Delay in GROUP-PROPAGATE of 1 bit Full-Adder     = 2
+
+
+
+
+Synthesis report 
+
+Synthesis Report of Ripple Carry Adder
+
+Design Statistics
+# IOs                              : 26
+
+Cell Usage :
+# BELS                             : 16
+#      LUT3                        : 16
+# IO Buffers                       : 26
+#      IBUF                        : 17
+#      OBUF                        : 9
+
+-----------------------------------------------------------------
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s400pq208-5 
+
+ Number of Slices:                        9  out of   3584     0%  
+ Number of 4 input LUTs:                 16  out of   7168     0%  
+ Number of IOs:                          26
+ Number of bonded IOBs:                  26  out of    141    18%  
+
+
+
+
+
+
+
+
+
+
+
+
+
+

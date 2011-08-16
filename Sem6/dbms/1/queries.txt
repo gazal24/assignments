@@ -1,0 +1,81 @@
+CREATE table "COURSE" (
+    "NAME"        VARCHAR2(100),
+    "DESCRIPTION" VARCHAR2(4000),
+    "COURSENUM"   CHAR(7),
+    "CREDITS"     NUMBER,
+    "DEPARTMENT"  CHAR(2),
+    constraint  "COURSE_PK" primary key ("COURSENUM")
+)
+/
+
+CREATE sequence "COURSE_SEQ" 
+/
+
+CREATE trigger "BI_COURSE"  
+  before insert on "COURSE"              
+  for each row 
+begin  
+    select "COURSE_SEQ".nextval into :NEW.COURSENUM from dual;
+end;
+/   
+
+ALTER TABLE "COURSE" ADD CONSTRAINT "COURSE_FK" 
+FOREIGN KEY ("DEPARTMENT")
+REFERENCES "DEPARTMENT" ("CODE")
+
+/
+
+
+
+
+
+CREATE table "SECTION" (
+    "INSTRUCTOR" VARCHAR2(50),
+    "SEMESTER"   VARCHAR2(10),
+    "YEAR"       NUMBER,
+    "COURSE"     CHAR(7),
+    "SECNUMBER"  NUMBER,
+    constraint  "SECTION_PK" primary key ("SECNUMBER")
+)
+/
+
+CREATE sequence "SECTION_SEQ" 
+/
+
+CREATE trigger "BI_SECTION"  
+  before insert on "SECTION"              
+  for each row 
+begin  
+    select "SECTION_SEQ".nextval into :NEW.SECNUMBER from dual;
+end;
+/   
+
+ALTER TABLE "SECTION" ADD CONSTRAINT "SECTION_FK" 
+FOREIGN KEY ("COURSE")
+REFERENCES "COURSE" ("COURSENUM")
+
+/
+
+
+
+
+
+
+
+CREATE table "REPORT" (
+    "STUDENT"    NUMBER,
+    "SECTION"    NUMBER,
+    "GRADE"      CHAR(1)
+)
+/
+
+ALTER TABLE "REPORT" ADD CONSTRAINT "REPORT_FK" 
+FOREIGN KEY ("SECTION")
+REFERENCES "SECTION" ("SECNUMBER")
+
+/
+ALTER TABLE "REPORT" ADD CONSTRAINT "REPORT_FK2" 
+FOREIGN KEY ("STUDENT")
+REFERENCES "STUDENT" ("SOCIAL_SECURITY_NUMBER")
+
+/

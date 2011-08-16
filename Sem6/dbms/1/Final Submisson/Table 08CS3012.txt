@@ -1,0 +1,162 @@
+GAZAL GARG
+08CS3012
+dbms013
+
+
+**************************************************************************************
+CREATE TABLE STUDENTS
+**************************************************************************************
+
+CREATE TABLE  "STUDENTS" 
+   (   "NAME" VARCHAR2(50), 
+   "SSN" VARCHAR2(10), 
+   "ADDRESS" VARCHAR2(100), 
+   "PHONE" NUMBER(12,0), 
+   "BIRTHDATE" DATE, 
+   "DEPARTMENT" VARCHAR2(2), 
+   "DEGREE" VARCHAR2(5), 
+    CONSTRAINT "STUDENTS_CON" PRIMARY KEY ("SSN") ENABLE
+   )
+
+**************************************************************************************
+INSERT INTO STUDENTS
+**************************************************************************************
+INSERT INTO courses(name, ssn, address, phone, birthdate, department, degree) VALUES
+
+('Gazal Garg', '08CS3012', 'RK HAll', 12345001, '24-05-1989', 'CS', 'DD'),
+('Deepesh Chowdhary', '08EC1013', 'RK HAll', 12345002, '29-apr-1989', 'EC', 'BT')
+('Jasmeet Singh', '08CY2008', 'RK HAll', 12345003, '06-jan-1990', 'CY', 'MS')
+('Jitendra Kumar', '08CE1036', 'RK HAll', 12345004, '02-sep-1990', 'CE', 'BT')
+('Shalin Bhatt', '08BT1018', 'RK HAll', 12345005, '09-may-1990', 'BT', 'BT')
+('Prateek Vora', '08HS2012', 'RK HAll', 12345006, '16-dec-1990', 'HS', 'MS')
+('Sahil Parekh', '08HS2006', 'RK HAll', 12345007, '26-mar-1989', 'HS', 'MS')
+('Anurag Kyal', '08CS1018', 'RK HAll', 12345008, '05-mar-1990', 'CS', 'BT')
+('Rahul Chatterjee', '08CS1006', 'RK HAll', 12345009, '12-jul-1990', 'CS', 'BT')
+('Sunil Kataria', '08CY2010', 'RK HAll', 12345010, '14-mar-1990', 'CY', 'MS')
+	
+
+
+**************************************************************************************
+CREATE TABLE DEPARTMENTS
+**************************************************************************************
+CREATE TABLE  "DEPARTMENTS" 
+   (   "NAME" VARCHAR2(100) NOT NULL ENABLE, 
+   "CODE" VARCHAR2(2) NOT NULL ENABLE, 
+   "OFFICENUM" NUMBER(10,0) NOT NULL ENABLE, 
+   "OFFICEPHONE" NUMBER(10,0) NOT NULL ENABLE, 
+   "COLLEGE" VARCHAR2(100), 
+    CONSTRAINT "DEPARTMENT_CON" PRIMARY KEY ("CODE") ENABLE
+   )
+
+
+**************************************************************************************
+INSERT INTO DEPARTMENTS
+**************************************************************************************
+INSERT INTO departments (Name, Code, OfficeNum, OfficePhone, College) VALUES
+('Computer Science and Engineering', 'CS', '501', 822019, 'IIT KGP'),
+('Humanities and Social Sciences', , 'HS, '502', 822020, 'IIT KGP'),
+('Electronics Engineering', 'EC', '503', 822021, 'IIT KGP'),
+('Chemistry', 'CY', '504', 822022, 'IIT KGP'),
+('Civil Engg.', 'CE', '505', 822023, 'IIT KGP'),
+
+
+
+**************************************************************************************
+CREATE TABLE COURSES
+**************************************************************************************
+CREATE TABLE  "COURSES" 
+   (   "NAME" VARCHAR2(100), 
+   "DESCRIPTION" VARCHAR2(500), 
+   "CREDITS" NUMBER(1,0), 
+   "DEPARMENT" VARCHAR2(10) NOT NULL ENABLE, 
+   "CODE" VARCHAR2(10) NOT NULL ENABLE, 
+    CONSTRAINT "COURSES_CON" PRIMARY KEY ("CODE") ENABLE
+   )
+
+**************************************************************************************
+INSERT INTO COURSES
+**************************************************************************************
+INSERT INTO Courses (Name,  Description,  Code, Credits,  Department) VALUES
+
+('Compilers Theory', 'Compiler Making and Theory', 'CS31005', 4, 'CS')
+('Soil Engg.', 'Study of Vaious Soils', 'CE31001', 3, 'CE')
+('Thermodynamics', 'Study of Thermal Chemical Reactions', 'CY33012', 5, 'CY')
+('Into to Economics', 'Study of basics of Economical growth', 'HS21001', 4, 'HS')
+('Into to Basic EC', 'Its abt basics of Ecectronics', 'EC35012', 4, 'EC')
+('Into to Civil', 'Knowing abt scope of Civil Engg.', 'CE23004', 5, 'CE')
+('Sociology', 'Socail Acpects and Human Rights', 'HS35007', 3, 'HS')
+('Software Engineering', 'Planning and making a software', 'CS35401', 4, 'CS')
+('Algorithms 2', 'More on Algorithms 1', 'CS33003', 4, 'CS')
+('Anolog Circuit', 'The making of Anolog Circuits', 'EC12020', 5, 'EC')
+('Organic Chemistry', 'the basic of organic chemistry and reactions', 'CY53010', 5, 'CY')
+
+
+
+
+**************************************************************************************
+CREATE TABLE SECTION
+**************************************************************************************
+CREATE TABLE  "SECTIONS" 
+   (   "INSTRUCTOR" VARCHAR2(50), 
+   "SEMESTER" VARCHAR2(10), 
+   "YEAR" NUMBER(4,0), 
+   "COURSE" VARCHAR2(10), 
+   "SECTIONNUM" NUMBER(2,0)
+    CONSTRAINT "SECTION_CON" PRIMARY KEY ("sectionnum", "course") ENABLE
+    )
+
+**************************************************************************************
+INSERT INTO SECTION
+**************************************************************************************
+
+INSERT INTO Sections (Instructor, Semester, Year, Course, SectionNum) VALUES
+('D Das', 'Spring', 2010, 'CS31005', 1)
+('Suman Sood', 'Spring', 2010, 'CS31005', 3)
+('Ajit Gupta', 'Spring', 2010, 'CS31005', 2)
+('Amit Patra', 'Autumn', 2008, 'CE31001', 1)
+('Santosh Singh', 'Spring', 2009, 'CY33012', 1)
+('Pawan Kumar', 'Autumn', 2010, 'HS21001', 1)
+('A Halder', 'Spring', 2008, 'EC35012', 1)
+('Chand Prakash', 'Spring', 2008, 'EC35012', 2)
+('Manish Bhatt', 'Spring', 2008, 'EC35012', 3)
+('Praveen Singh', 'Autumn', 2009, 'CE23004', 1)
+('Manan Shah', 'Spring', 2009, 'HS35007', 1)
+('Saurabh Shahi', 'Spring', 2009, 'HS35007', 2)
+('Sugam Patel', 'Spring', 2010, 'CS35401', 1)
+('Arun Kuamr', 'Autumn', 2008, 'CS3303', 1)
+('Mamta', 'Autumn', 2008, 'CS3303', 2)
+('Saurabh Mall', 'Spring', 2008, 'EC12020', 1)
+('P Somnath', 'Autumn', 2009, 'CY53010', 1)
+
+
+**************************************************************************************
+CREATE TABLE GRADES
+**************************************************************************************
+
+CREATE TABLE  "GRADES" 
+   (   "STUDENT" VARCHAR2(10) NOT NULL ENABLE, 
+   "SECTION" NUMBER(2,0) NOT NULL ENABLE, 
+   "GRADE" VARCHAR2(5), 
+   "COURSE" VARCHAR2(10) NOT NULL ENABLE
+    CONSTRAINT "GRADES_CON" PRIMARY KEY ("COURSE", "STUDENT") ENABLE
+    )
+
+**************************************************************************************
+INSERT INTO GRADES
+**************************************************************************************
+
+INSERT INTO grades (Student, Course, Section, Grade) VALUES
+
+('08CS3012', 'CS31005', 2, NULL)
+('08CS3012', 'CE23004', 1, NULL)
+('08CS3012', 'HS35007', 1, NULL)
+('08EC1013', 'CE23004', 1, NULL)
+('08EC1013', 'EC12020', 1, NULL)
+('08CY2008', 'CS33003', 2, NULL)
+('08CE1036', 'EC12020', 1, NULL)
+('08CE1036', 'CE23004', 1, NULL)
+('08CS1018', 'CS31005', 3, NULL)
+('08CS1018', 'CS35401', 1, NULL)
+('08HS2012', 'HS35007', 2, NULL)
+('08HS2012', 'CY33012', 1, NULL)
+

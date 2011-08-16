@@ -1,0 +1,50 @@
+GAZAL GARG
+08CS3012
+dbms013
+
+
+-------------------------------------------------
+Q.1.1]
+SELECT Students.Name as NAME
+FROM Grades, Section, Courses,Students
+WHERE Grades.Student=Students.SSN 
+AND Grades.Section = Section.SectionNum
+AND Courses.code = Section.Course
+GROUP BY Students.SSN
+HAVING COUNT(DISTINCT Courses.Department)>1
+-------------------------------------------------
+Q.1.2]
+SELECT Students.Name AS NAME,Students.SSN AS SSN
+FROM Grades, Section, Courses, Students
+WHERE Students.SSN = Grades.Student
+AND Grades.Section = Section.SectionNum
+AND Courses.Code = Section.Course
+GROUP BY Grades.Student,Courses.Department 
+HAVING COUNT(*)>1
+-------------------------------------------------
+Q.1.3]
+SELECT Students.Name as NAME 
+FROM Grades , Students
+WHERE Students.SSN = Grades.Student
+GROUP BY SSN
+HAVING 'B' >=  all(SELECT Grade from Grades      
+                     where Student=SSN)
+-------------------------------------------------
+Q.1.4]
+SELECT NAME
+FROM (SELECT Students.Name AS NAME,Grades.Grade
+FROM Students,Grades,Section,Courses
+WHERE Courses.Department='CS'
+AND Grades.Section=Section.Sectionnum 
+AND Section.Course=Courses.Code
+AND Students.SSN=Grades.Student
+GROUP BY Students.SSN 
+HAVING 'A'=Grades.Grade) AS TAB
+-------------------------------------------------
+Q.1.5]
+SELECT Courses.code AS Course,Students.Department AS Department,MIN(Grades.Grade) AS HighestGrade
+FROM Section,Courses,Grades,Students
+WHERE Section.Course=Courses.Code AND Section.SectionNum=Grades.Section AND Students.SSN=Grades.Student
+GROUP BY Courses.code,Students.Department
+-------------------------------------------------
+

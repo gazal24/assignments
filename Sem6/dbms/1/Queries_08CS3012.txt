@@ -1,0 +1,38 @@
+===============
+Gazal Garg
+08CS3012
+Assignment 1.2
+===============
+Query 1:
+
+SELECT Students.Name as NAME 
+FROM Students, Grades, Courses, Sections 
+WHERE Grades.Student=Students.SSN AND Grades.Section = Sections.SectionNum AND Courses.code = Sections.Course GROUP BY Students.Name HAVING COUNT(DISTINCT Courses.Deparment)>1
+
+
+
+Query 2:
+
+SELECT Students.Name AS NAME, Students.SSN AS SSN 
+FROM Grades, Sections, Courses, Students 
+WHERE Students.SSN = Grades.Student AND Grades.Section = Sections.SectionNum AND Courses.Code = Sections.Course GROUP BY Students.Name, Students.SSN HAVING COUNT (*)>1
+
+
+Query 3:
+
+SELECT students.name FROM students WHERE students.ssn IN 
+(SELECT students.ssn FROM students, grades WHERE students.ssn = grades.student GROUP BY students.ssn having 'b' >=  all(select grade from grades, students where grades.student=students.ssn))
+
+
+Query 4:
+
+SELECT DISTINCT students.name 
+FROM students,grades 
+WHERE STUDENTS.SSN=GRADES.STUDENT  AND GRADES.DEPARTMENT = 'CS' AND STUDENTS.SSN NOT IN 
+( SELECT STUDENTS.SSN FROM STUDENTS, GRADES WHERE STUDENTS.SSN = GRADES.STUDENT AND GRADES.DEPARTMENT = 'CS'  AND (GRADE='B' OR GRADE ='C' OR GRADE ='D') )
+
+
+Query 5:
+
+SELECT GRADES.COURSE, STUDENTS.DEPARTMENT, MIN(GRADES.GRADE) AS GRADE FROM GRADES, STUDENTS 
+WHERE STUDENTS.SSN = GRADES.STUDENT GROUP BY GRADES.COURSE, STUDENTS.DEPARTMENT

@@ -1,0 +1,4 @@
+select student.name from student where student.ssn in 
+(select student.ssn 
+from student, gradereport 
+where student.ssn = gradereport.ssn group by student.ssn having 'b' >=  all(select grade from gradereport where gradereport.ssn=student.ssn))
